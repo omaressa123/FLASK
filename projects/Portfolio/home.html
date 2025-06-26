@@ -1,0 +1,241 @@
+{% extends "layout.html"%}
+{% block content%}
+<section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+    <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <div>
+                <h1 class="display-1 mb-10 glow-text">PORTFOLIO<span class="text-info"> OMAR</span></h1>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Social Media -->
+<section class="bg-primary text-light p-5">
+    <div class="container">
+        <div class="d-md-flex justify-content-between align-items-center">
+            <h3 class="mb-3 text-center">Join Our Community</h3>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <button class="navbar-toggler border" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#socialbtn">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="socialbtn">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="btn btn-dark ms-5 button_width dual-glow-card" href="https://www.linkedin.com/in/omar-mohamed-650104324?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                                target="_blank">
+                                <i class="bi bi-linkedin" role="img"></i>
+                                LINKEDIN
+                            </a>
+                        </li>
+                        <li>
+                            <a class="btn btn-dark ms-5 button_width dual-glow-card" href="https://www.facebook.com/share/ykchKNkam6jQnJLe/?mibextid=qi2Omg"
+                                target="_blank">
+                                <i class="bi bi-facebook "></i>
+                                Facebook
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a type="button" class="btn btn-dark ms-5 button_width dual-glow-card"
+                               href="https://www.instagram.com/xomaressax1/" target="_blank">
+                                <i class="bi bi-instagram"></i>
+                                Instagram
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</section>
+<!-- Courses -->
+<section class="bg-gradient">
+    <div class="container p-5">
+        <h3 class="text-center text-light" id='learn'>Courses</h3>
+        <div class="row">
+            {% for course in courses %}
+            <div class="col-sm-12 col-md-6 col-lg-4 p-3 d-flex align-items-stretch">
+                <a href="#course_name" class="text-decoration-none w-100">
+                    <div class="card modern-card dual-glow-card">
+                        <div class="card-body text-center">
+                            <img src="{{url_for('static', filename=course.icon)}}" alt="" class="card-img w-25 course-icon">
+                            <h4 class="card-title mb-4">
+                                {{course.name}}
+                            </h4>
+                            <p class="card-text"></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- PROJECT -->
+<section class="bg-gradient-dark">
+    <div class="container p-5">
+        <div class="row mb-5">
+            <div class="col">
+                <h3 class="text-uppercase text-center text-light">Latest Projects</h3>
+            </div>
+        </div>
+        <div class="row">
+            {% for project in project %}
+            <div class="col-sm-12 col-md-6 col-lg-4 pb-5 d-flex align-items-stretch">
+                <div class="card number-card dual-glow-card">
+                    <div class="number-overlay">
+                        <span class="project-number">{{loop.index}}</span>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">
+                            <a class="text-decoration-none" href="#">{{project.name}}</a>
+                        </h5>
+                        <p class="card-text mb-0">In:
+                            <a class="text-decoration-none" href="#">{{project.course}}</a>
+                        </p>
+                        <span class="project-author">
+                            By: <a href="#" class="link">{{project.link}}</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<style>
+@keyframes dual-glow {
+    0% {
+        box-shadow: 0 0 30px #00f7ff,
+                   0 0 50px #00f7ff,
+                   0 0 70px #0099ff,
+                   inset 0 0 30px rgba(0, 153, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 40px #00ccff,
+                   0 0 60px #00ccff,
+                   0 0 80px #0099ff,
+                   inset 0 0 50px rgba(0, 153, 255, 0.7);
+    }
+    100% {
+        box-shadow: 0 0 30px #00f7ff,
+                   0 0 50px #00f7ff,
+                   0 0 70px #0099ff,
+                   inset 0 0 30px rgba(0, 153, 255, 0.5);
+    }
+}
+
+.bg-gradient {
+    background: linear-gradient(135deg, #006699, #0099ff, #00ccff);
+    animation: gradientShift 10s infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.bg-gradient-dark {
+    background: linear-gradient(135deg, #001933, #003366, #004d99);
+}
+
+.dual-glow-card {
+    transition: all 0.4s ease;
+    border: none;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.dual-glow-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    animation: dual-glow 1.5s infinite;
+    background: rgba(0, 26, 51, 0.6);
+}
+
+.modern-card {
+    border-radius: 15px;
+    background: linear-gradient(145deg, rgba(0, 153, 255, 0.2), rgba(0, 204, 255, 0.1));
+    color: #fff;
+}
+
+.number-card {
+    border-radius: 15px;
+    background: rgba(0, 26, 51, 0.4);
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    min-height: 200px;
+}
+
+.number-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    background: rgba(0, 26, 51, 0.9);
+}
+
+.number-card:hover .number-overlay {
+    opacity: 1;
+}
+
+.project-number {
+    font-size: 8rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #00ccff, #0099ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: numberGlow 2s infinite;
+}
+
+@keyframes numberGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 20px rgba(0, 153, 255, 0.8));
+    }
+    50% {
+        filter: drop-shadow(0 0 30px rgba(0, 204, 255, 1));
+    }
+}
+
+.number-card .card-body {
+    padding: 1.5rem;
+    z-index: 1;
+}
+
+.number-card .card-title a {
+    color: #fff;
+    font-weight: 600;
+}
+
+.number-card .project-author {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.glow-text {
+    text-shadow: 2px 2px 4px rgba(0, 153, 255, 0.6),
+                -2px -2px 4px rgba(0, 204, 255, 0.6);
+}
+
+.button_width {
+    min-width: 140px;
+}
+
+.course-icon {
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+</style>
+
+{% endblock content%}
