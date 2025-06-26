@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="books-container">
+    {% for book in books %}
+    <div class="book-card">
+        <div class="book-icon">
+            {% if book.baninfo[0].danger_level == 'High' %}
+            <i class="fas fa-book-dead"></i>
+            {% elif book.baninfo[0].danger_level == 'Medium' %}
+            <i class="fas fa-book-medical"></i>
+            {% else %}
+            <i class="fas fa-book"></i>
+            {% endif %}
+        </div>
+        <h2 class="book-title">{{ book.title }}</h2>
+        <p class="book-author">By {{ book.author.name }}</p>
+        <div class="book-info">
+            <p><strong>Published:</strong> {{ book.publish_date }}</p>
+            <p><strong>Topic:</strong> {{ book.topic }}</p>
+            <p><strong>Age Rating:</strong> {{ book.suitable_age }}</p>
+            <p><strong>Publisher:</strong> {{ book.publisher.name }}</p>
+        </div>
+        <div class="ban-info">
+            <p><strong>Ban Reason:</strong> {{ book.baninfo[0].reason }}</p>
+            <p><strong>Danger Level:</strong> 
+                <span class="danger-{{ book.baninfo[0].danger_level.lower() }}">
+                    {{ book.baninfo[0].danger_level }}
+                </span>
+            </p>
+            <p><strong>Banned in:</strong> 
+                {% for country in book.banned_countries %}
+                    {{ country.country_name }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

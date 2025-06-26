@@ -1,0 +1,116 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin: 0;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #336699;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #254e77;
+}
+
+.books-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.book-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+}
+
+.book-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+}
+
+.book-card:nth-child(1)::before { background-color: #FF6B6B; }
+.book-card:nth-child(2)::before { background-color: #4ECDC4; }
+.book-card:nth-child(3)::before { background-color: #45B7D1; }
+.book-card:nth-child(4)::before { background-color: #96CEB4; }
+.book-card:nth-child(5)::before { background-color: #FFEEAD; }
+.book-card:nth-child(6)::before { background-color: #D4A5A5; }
+.book-card:nth-child(7)::before { background-color: #9B59B6; }
+.book-card:nth-child(8)::before { background-color: #3498DB; }
+.book-card:nth-child(9)::before { background-color: #E67E22; }
+.book-card:nth-child(10)::before { background-color: #2ECC71; }
+
+.book-icon {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.book-title {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.book-author {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.book-info {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.book-info p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.ban-info {
+    margin-top: 15px;
+    padding: 10px;
+    background: #fff5f5;
+    border-radius: 5px;
+}
+
+.danger-high {
+    color: #dc3545;
+}
+
+.danger-medium {
+    color: #ffc107;
+}
+
+.danger-low {
+    color: #28a745;
+}
